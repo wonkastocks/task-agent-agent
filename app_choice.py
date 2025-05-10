@@ -83,10 +83,12 @@ elif page == "Local Ollama Assistant":
                 try:
                     # Format prompt for output type
                     prompt = user_prompt
-                    if fmt == "Bullet points":
-                        prompt += "\n\nRespond in bullet points."
-                    elif fmt == "Numbered list":
-                        prompt += "\n\nRespond as a numbered list."
+                    if fmt == "Numbered list":
+                        prompt += "\n\nOutput ONLY a markdown numbered list of actionable steps (1., 2., 3., etc.). Do NOT use bullet points, paragraphs, headings, or summaries—just the numbered steps."
+                    elif fmt == "Bullet points":
+                        prompt += "\n\nOutput ONLY a markdown bullet list of actionable steps (using '-', '*', or '+'). Do NOT use numbered lists, paragraphs, headings, or summaries—just bullet points."
+                    else:
+                        prompt += "\n\nProvide a visually appealing, well-organized plan to achieve this goal. Use a mix of short paragraphs, bullet points, and numbered lists as appropriate to make the plan clear, actionable, and easy to follow. Make it look good and professional."
                     response = requests.post(
                         "http://localhost:11434/api/generate",
                         json={

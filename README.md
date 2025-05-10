@@ -1,72 +1,131 @@
-# AI Assistant Streamlit App
+# Achieve your Goals – Task Breakdown App
 
-This project is a modern, visually appealing Streamlit web application that allows users to interact with large language models (LLMs) from both OpenAI (GPT-3.5, GPT-4) and locally hosted Ollama models. The app features a user-friendly interface for generating AI-powered responses in various formats.
+---
 
-## Features & UI Elements
+## Overview
 
-- **Sidebar:**
-  - **Model Selector**: Choose from available OpenAI or Ollama models (only those installed locally are shown).
-  - **API Key Field**: Securely enter your OpenAI API key (only required for OpenAI models).
-  - **Temperature Slider**: Adjust the creativity of the model's responses.
+**Achieve your Goals** is a modern, interactive web application that helps users turn their ambitions into actionable plans. Powered by OpenAI's language models and built with Streamlit, this app allows you to enter any goal and receive a concrete, step-by-step plan to achieve it. The app is designed for clarity, compactness, and ease of use, making it ideal for anyone looking to break down complex objectives into manageable tasks.
 
-- **Main Area:**
-  - **Header**: App title, model icon, and currently selected model.
-  - **Input Box**: Enter your question or prompt for the AI.
-  - **Response Format Selector**: Choose between Full Text, Bullet Points, or Numbered List output.
-  - **Generate Response Button**: Triggers the AI to generate and display a response.
-  - **Output Box**: Displays the AI's answer in the selected format.
-  - **About Section**: Expandable section with app details and usage notes.
+**Purpose:**  
+- Help users clarify their goals.  
+- Automatically generate detailed, actionable plans.  
+- Provide an intuitive, visually appealing interface for productivity and planning.
+
+---
+
+## App Interface Screenshot
+
+![Task Helper App Screenshot](Graphics/Screenshot%202025-05-10%20at%2019.17.53.png)
+
+*Above: The main interface of the app, featuring the goal input, temperature slider, output format selector, and sidebar for model/API key controls.*
+
+---
+
+## Functions & Features
+
+### Core Functions
+
+- **Goal Input & Validation**
+  - Users enter their goal in a text area.
+  - The app uses rule-based logic to ensure the input is actionable (not just a topic or question).
+- **Task Breakdown Generation**
+  - Valid goals are sent to OpenAI’s GPT model.
+  - The model returns a structured, easy-to-follow plan.
+- **Output Formatting**
+  - Users can choose from three output styles:
+    - Standard (mix of paragraphs, bullets, and numbered lists)
+    - Bullet List (all tasks as bullet points)
+    - Numbered List (sequential, step-by-step)
+- **Sidebar Controls**
+  - **Model Selector:** Choose from available AI models.
+  - **API Key Input:** Securely enter your OpenAI API key.
+  - **Temperature Slider:** Adjust the creativity of AI responses.
+
+### Visual & Usability Features
+
+- Compact, minimalist layout with custom CSS for spacing and readability.
+- Responsive design for various screen sizes.
+- Clear feedback and error messages for invalid input.
+
+---
+
+## Testing, Implementation & Future Recommendations
+
+### Testing & Development Scripts
+
+- **test_classifier.py:**  
+  Standalone Streamlit page for testing the goal classifier and OpenAI integration.  
+  - Validates the goal classification logic.
+  - Displays sample outputs and error handling.
+  - Useful for refining logic before deployment.
+
+### Implementation Notes
+
+- The main logic resides in `app.py`.
+- The app uses environment variables or sidebar input for API key security.
+- All UI and logic are thoroughly commented for maintainability.
+
+### Recommended Future Features
+
+- Save and export generated plans.
+- Integrate with popular task management tools (e.g., Todoist, Trello).
+- Add user authentication for personalized experiences.
+- Support for multi-step or recurring goals.
+- Enhanced goal validation using NLP or LLMs for greater accuracy.
+
+---
+
+## Summary
+
+**Achieve your Goals** empowers users to move from intention to action with AI-driven planning. With its clean interface, robust validation, and flexible output options, it’s a practical tool for anyone seeking clarity and momentum in their personal or professional projects.
+
+If you have suggestions or would like to contribute, please open an issue or submit a pull request!
+
+---
 
 ## Supported LLM Models
 
 - **OpenAI:**
-  - `gpt-3.5-turbo`
-  - `gpt-4`
-  - (Requires your own OpenAI API key, never stored or uploaded)
-
-- **Ollama (local):**
-  - Only the following models are shown if installed locally:
-    - dolphin-phi:latest
-    - gemma3:1b
-    - smollm:135m
-    - llama3.1:8b
-    - llama2-uncensored:latest
-    - phi3.5:latest
-    - wizard-vicuna-uncensored:30b
-    - dolphin-mistral:latest
-    - llama2-uncensored:7b
-    - llama3.2:3b
-    - llava:latest
-
-## How the Dropdown Works
-- The model selector dynamically lists only OpenAI models and the above Ollama models that are actually available on your system.
-- This prevents errors from selecting a model that is not installed.
+  - `gpt-3.5-turbo` (default)
+  - Other OpenAI models can be easily configured
+  - Requires your own OpenAI API key (never stored or uploaded)
 
 ## How to Run
 1. **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-2. **Start Ollama (if using local models):**
-    ```bash
-    ollama serve
-    # and pull any desired models, e.g.:
-    ollama pull dolphin-phi:latest
+2. **Set up your OpenAI API key:**
+    - Create a `.env` file in the project root with your OpenAI API key:
     ```
+    OPENAI_API_KEY=your_api_key_here
+    ```
+    - Or enter it directly in the app's sidebar
+
 3. **Run the app:**
     ```bash
-    streamlit run app_unified.py
+    streamlit run app.py
     ```
-4. **Open in your browser** as directed by Streamlit.
+4. **Open in your browser** at the URL provided by Streamlit (typically http://localhost:8501)
 
 ## App Structure & Logic
-- All main logic is in `app_unified.py`.
-- The sidebar is used for model selection, API key entry, and temperature control.
-- The main area handles input, output, and formatting options.
-- The app detects which models are available and adapts the UI accordingly.
-- OpenAI requests use your API key securely from the environment or sidebar input.
-- Ollama requests are sent to your local server and only for models you have installed.
-- Prompt instructions are dynamically modified based on the selected output format.
+- **Main Components:**
+  - `app.py`: Primary application file with UI and API integration
+  - `main.py`: Backend logic for the task generation agent
+  - Custom CSS for optimal layout and spacing
+
+- **Key Features:**
+  - Goal validation to ensure proper input
+  - Dynamic prompt engineering based on selected output format
+  - Temperature control for adjusting AI creativity
+  - Responsive design with optimized spacing
+
+- **How It Works:**
+  1. User enters a goal in the text area
+  2. App validates if the input is a proper goal
+  3. User selects desired output format (Standard, Bullet List, or Numbered List)
+  4. OpenAI API processes the goal with format-specific instructions
+  5. Response is displayed with appropriate formatting and spacing
 
 ## Security Notes
 - **No API keys or sensitive data are ever stored or uploaded.**
