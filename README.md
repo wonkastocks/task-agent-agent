@@ -29,6 +29,57 @@
 
 ---
 
+## Supported LLM Models
+
+The following Large Language Models (LLMs) have been tested and used locally with this app via Ollama:
+
+- dolphin-phi:latest
+- nidumai/nidum-limitless-gemma-2b:latest
+- gemma3:1b
+- llama3.2:latest
+- smollm:135m
+- mxbai-embed-large:latest
+- huihui_ai/qwen3-abliterated:latest
+- artifish/llama3.2-uncensored:latest
+- llama3.1:8b
+- llama2-uncensored:latest
+- huihui_ai/perplexity-ai-r1:671b-q2_K
+- phi3.5:latest
+- deepseek-r1:latest
+- deepcoder:latest
+- granite3.3:latest
+- thirdeyeai/DeepSeek-R1-Distill-Qwen-7B-uncensored:latest
+- dolphincoder:15b
+- wizard-vicuna-uncensored:30b
+- dolphin-mistral:7b
+- dolphin-mistral:latest
+- llama2-uncensored:7b
+- qwen2.5-coder:latest
+- jimscard/whiterabbit-neo:latest
+- jimscard/blackhat-hacker:latest
+- llama3.2:3b
+- eas/nous-hermes-2-solar-10.7b:latest
+- openhermes:latest
+- llava:latest
+- llama2:7b
+- phi:latest
+
+These models cover a wide range of capabilities, from general-purpose reasoning to code generation and multimodal tasks. The app is compatible with both OpenAI and Ollama local models.
+
+---
+
+## Classifier: Ensuring Only Actionable Goals
+
+The app includes a built-in classifier that analyzes user input to determine if it is a valid, actionable goal. This is important because:
+
+- **Prevents non-goal submissions:** Users cannot submit questions, topics, or statements that are not actionable goals.
+- **Guides user input:** If a submission is not a goal, the app provides a clear message, a definition of a goal, and concrete examples to help users rephrase their input.
+- **Improves AI output quality:** By filtering out non-goals, the AI only receives meaningful prompts, resulting in more relevant and actionable plans.
+
+*The classifier is essential for maintaining the app's focus and ensuring users receive useful, step-by-step plans for real goals.*
+
+---
+
 ## Functions & Features
 
 ### Core Functions
