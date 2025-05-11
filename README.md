@@ -142,18 +142,7 @@ If you have suggestions or would like to contribute, please open an issue or sub
 
 ---
 
-## Supported LLM Models
 
-- **OpenAI:**
-  - `gpt-3.5-turbo` (default)
-  - Other OpenAI models can be easily configured
-  - Requires your own OpenAI API key (never stored or uploaded)
-
-## How to Run
-1. **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
 2. **Set up your OpenAI API key:**
     - Create a `.env` file in the project root with your OpenAI API key:
     ```
