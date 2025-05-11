@@ -1,1 +1,19 @@
-[COPY FROM /Users/walterbarr_1/CascadeProjects/StreamLit/requirements.txt]
+# Python requirements for Achieve your Goals – Task Breakdown App
+streamlit>=1.30.0
+openai>=1.0.0
+python-dotenv>=1.0.0
+
+# ---
+# Additional resources and configuration
+
+# API Keys (add these to your .env file, do not include values here)
+# OPENAI_API_KEY
+
+# Graphics assets (place these in the Graphics/ folder):
+# - Image1.png
+# - Image 2.jpg
+# - (any other screenshots or icons referenced in README or app)
+
+# Other notes:
+# - __pycache__/ and static/ directories are ignored via .gitignore
+# - .env file should be created for local API key management
